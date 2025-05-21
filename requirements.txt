@@ -1,0 +1,8 @@
+torch>=1.10.0
+ultralytics>=8.0.20
+opencv-python>=4.5.3.56
+pycocotools>=2.0.6
+PyYAML>=5.4.1
+numpy>=1.19.2
+tqdm>=4.62.0
+Pillow>=8.2.0

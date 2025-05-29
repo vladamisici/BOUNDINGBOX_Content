@@ -1,0 +1,15 @@
+path: data
+train: images/train
+val: images/val
+
+tc: 1
+nc: 1
+names: ['content_box']
+
+eyes: 50 
+epochs: 50
+imgsz: 640
+batch: 16
+
+project: models/checkpoints
+name: content_box_exp

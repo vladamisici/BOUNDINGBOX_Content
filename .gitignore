@@ -89,3 +89,7 @@ data/images/
 data/labels/
 models/checkpoints/
 models/exports/
+runs/inference
+
+annotations_publaynet_train.json
+annotations_publaynet_val.json

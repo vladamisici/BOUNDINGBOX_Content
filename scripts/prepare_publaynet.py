@@ -4,13 +4,11 @@ import json
 from tqdm import tqdm
 
 """
-prepare_publaynet.py
+toate PubLayNet COCO annotations intr-un "content_box" / image.
 
-Filter and aggregate PubLayNet COCO annotations to a single "content_box" per image.
-Usage:
-    python prepare_publaynet.py \
-        --coco data/raw/publaynet/annotations/train.json \
-        --classes text title list \
+    python prepare_publaynet.py `
+        --coco data/raw/publaynet/labels/publaynet/train.json `
+        --classes text title list `
         --out data/annotations_publaynet_train.json
 """
 
@@ -32,9 +30,9 @@ def get_category_ids(coco, target_names):
 
 
 def aggregate_bboxes(coco, target_ids):
-    # Map image_id to its filename and dimensions
+    # Map image_id - filename & dimensiuni
     images = {img['id']: img for img in coco['images']}
-    # Collect bboxes per image
+    # bboxes / image
     img_to_boxes = {img_id: [] for img_id in images}
 
     for ann in coco['annotations']:
@@ -66,22 +64,21 @@ def aggregate_bboxes(coco, target_ids):
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Prepare PubLayNet for content_box detection')
+    parser = argparse.ArgumentParser(description='Pregateste PubLayNet pt content_box detection')
     parser.add_argument('--coco', required=True,
                         help='Path to COCO JSON annotations file')
     parser.add_argument('--classes', nargs='+', default=['text', 'title', 'list'],
-                        help='Category names to aggregate (e.g., text title list)')
+                        help='nume categorii')
     parser.add_argument('--out', required=True,
-                        help='Output path for aggregated JSON annotations')
+                        help='Output path pt JSON annotations')
     args = parser.parse_args()
 
-    # Load
     coco = load_coco_annotations(args.coco)
-    # Identify target category IDs
+    # target category IDs
     target_ids = get_category_ids(coco, args.classes)
-    # Aggregate
+    # aggregate
     aggregated = aggregate_bboxes(coco, target_ids)
-    # Save
+    # save
     os.makedirs(os.path.dirname(args.out), exist_ok=True)
     with open(args.out, 'w') as f:
         json.dump(aggregated, f, indent=2)

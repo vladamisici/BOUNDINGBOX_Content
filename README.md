@@ -1,4 +1,4 @@
-# Content-Box-Detector
+# BOUNDINGBOX_Content
 
 ## 1. Structura proiect
 ```

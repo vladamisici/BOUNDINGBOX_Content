@@ -23,7 +23,6 @@ content-box-detector/
 └── .gitignore
 ```
 
-![Structura proiect](docs/structure.png)
 
 ---
 
@@ -44,7 +43,6 @@ python scripts/download_publaynet.py \
   --output data/raw/publaynet
 ```
 
-![Download PubLayNet](docs/download.png)
 
 ---
 
@@ -56,7 +54,6 @@ python scripts/prepare_publaynet.py \
   --out data/annotations_publaynet_train.json
 ```
 
-![Agregare bounding-box](docs/prepare.png)
 
 ---
 
@@ -70,7 +67,6 @@ python scripts/convert_to_yolo.py \
   --out-labels data/labels
 ```
 
-![YOLO labels](docs/convert.png)
 
 ---
 
@@ -79,7 +75,6 @@ python scripts/convert_to_yolo.py \
 python scripts/train.py --config config.yaml --device 0
 ```
 
-![Training](docs/train.png)
 
 ---
 
@@ -92,7 +87,6 @@ python scripts/infer.py \
   --conf 0.25
 ```
 
-![Inferenta](docs/infer.png)
 
 ---
 

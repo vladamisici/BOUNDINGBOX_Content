@@ -29,7 +29,7 @@ content-box-detector/
 ## 2. Instalare dependinte
 ```bash
 python -m venv .venv
-.venv\Scripts\activate   # Windows
+.venv\Scripts\activate.ps1   # Windows
 # sau: source .venv/bin/activate  # Linux/Mac
 pip install -r requirements.txt
 ```
@@ -38,8 +38,8 @@ pip install -r requirements.txt
 
 ## 3. Download PubLayNet
 ```bash
-python scripts/download_publaynet.py \
-  --parts full labels \
+python scripts/download_publaynet.py 
+  --parts full labels `
   --output data/raw/publaynet
 ```
 
@@ -48,9 +48,9 @@ python scripts/download_publaynet.py \
 
 ## 4. Pregatire anotari
 ```bash
-python scripts/prepare_publaynet.py \
-  --coco data/raw/publaynet/labels/train.json \
-  --classes text title list figure table \
+python scripts/prepare_publaynet.py `
+  --coco data/raw/publaynet/labels/train.json `
+  --classes text title list figure table `
   --out data/annotations_publaynet_train.json
 ```
 
@@ -59,11 +59,11 @@ python scripts/prepare_publaynet.py \
 
 ## 5. Convertire in format YOLO
 ```bash
-python scripts/convert_to_yolo.py \
-  --train-json data/annotations_publaynet_train.json \
-  --val-json   data/annotations_publaynet_val.json \
-  --image-root data/raw/publaynet/full \
-  --out-images data/images \
+python scripts/convert_to_yolo.py `
+  --train-json data/annotations_publaynet_train.json `
+  --val-json   data/annotations_publaynet_val.json `
+  --image-root data/raw/publaynet/full `
+  --out-images data/images `
   --out-labels data/labels
 ```
 
@@ -80,10 +80,10 @@ python scripts/train.py --config config.yaml --device 0
 
 ## 7. Inferenta
 ```bash
-python scripts/infer.py \
-  --weights models/checkpoints/content_box_exp/weights/best.pt \
-  --source data/images/val \
-  --output runs/inference \
+python scripts/infer.py `
+  --weights models/checkpoints/content_box_exp/weights/best.pt `
+  --source data/images/val `
+  --output runs/inference `
   --conf 0.25
 ```
 
